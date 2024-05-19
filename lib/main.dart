@@ -21,6 +21,17 @@ class MyApp extends StatelessWidget {
           backgroundColor: xColorScheme.onPrimaryContainer,
           foregroundColor: xColorScheme.primaryContainer,
         ),
+        scaffoldBackgroundColor: xColorScheme.secondaryContainer,
+        cardTheme: const CardTheme().copyWith(
+          color: xColorScheme.secondary,
+        ),
+        textTheme: const TextTheme().copyWith(
+          bodyLarge: TextStyle(color: xColorScheme.secondaryContainer),
+        ),
+        checkboxTheme: const CheckboxThemeData().copyWith(
+          fillColor: WidgetStatePropertyAll(xColorScheme.secondaryContainer),
+          checkColor: WidgetStatePropertyAll(xColorScheme.onPrimaryContainer),
+        ),
       ),
       home: const HomePage(),
     );
