@@ -36,7 +36,7 @@ class _NewTodoState extends State<NewTodo> {
         ),
       );
     }
-    widget.onAddNewItem(Todo(title: _enteredItem.text));
+    widget.onAddNewItem(Todo(title: _enteredItem.text, checkBoxValue: false));
     FocusScope.of(context).unfocus();
     _enteredItem.clear();
   }
@@ -56,6 +56,9 @@ class _NewTodoState extends State<NewTodo> {
               decoration: const InputDecoration(
                 label: Text('Title'),
               ),
+              style: const TextStyle(
+                color: Color.fromARGB(255, 0, 78, 67),
+              ),
             ),
           ),
           Container(
@@ -64,6 +67,8 @@ class _NewTodoState extends State<NewTodo> {
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(15),
+                backgroundColor: const Color.fromARGB(255, 0, 142, 123),
+                iconColor: const Color.fromARGB(255, 0, 225, 195),
               ),
               onPressed: onSubmitNewItem,
               child: const Icon(Icons.add),
