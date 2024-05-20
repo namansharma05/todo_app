@@ -28,6 +28,13 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void removeItem(Todo item) {
+    int index = _registeredTodo.indexOf(item);
+    setState(() {
+      _registeredTodo.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +47,7 @@ class _HomePageState extends State<HomePage> {
             child: TodoList(
               registeredTodo: _registeredTodo,
               onCheckboxClick: checkboxClick,
+              onRemoveItem: removeItem,
             ),
           ),
           NewTodo(
