@@ -15,11 +15,28 @@ class _HomePageState extends State<HomePage> {
     Todo(title: 'sample todo item'),
     Todo(title: 'Complete the todo app'),
   ];
+  late List<bool?> _currentCheckboxValue;
 
   void addNewItem(Todo newItem) {
     setState(() {
       _registeredTodo.add(newItem);
+      _currentCheckboxValue.add(false);
     });
+  }
+
+  void checkboxClick(bool? value, int index) {
+    Todo indexElement = _registeredTodo[index];
+    bool? indexValue = _currentCheckboxValue[index];
+    setState(() {
+      _registeredTodo.remove(indexElement);
+      _currentCheckboxValue.remove(indexValue);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _currentCheckboxValue = List.generate(_registeredTodo.length, (_) => false);
   }
 
   @override
@@ -33,6 +50,8 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: TodoList(
               registeredTodo: _registeredTodo,
+              currentCheckboxValue: _currentCheckboxValue,
+              onCheckboxClick: checkboxClick,
             ),
           ),
           NewTodo(
